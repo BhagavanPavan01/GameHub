@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Best PC Games</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand game-logo" href="#">
+                <i class="fas fa-gamepad me-2"></i>GameHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#top-games">Top Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#genres">Genres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#upcoming">Upcoming</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Search games...">
+                    <button class="btn btn-outline-light" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold text-white mb-4">Discover The Best PC Games</h1>
+                    <p class="lead text-white mb-5">Explore our curated collection of top-rated PC games across all genres. Find your next adventure today!</p>
+                    <a href="#top-games" class="btn btn-primary btn-lg me-3">Explore Games</a>
+                    <a href="#upcoming" class="btn btn-outline-light btn-lg">Upcoming Releases</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Games Section -->
+    <section id="top-games" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header mb-5 text-center">
+                <h2 class="fw-bold">Top Rated PC Games</h2>
+                <p class="text-muted">The highest rated games according to critics and players</p>
+            </div>
+            
+            <div class="row g-4" id="games-container">
+                <!-- Games will be loaded here by JavaScript -->
+            </div>
+            
+            <div class="text-center mt-5">
+                <button class="btn btn-primary" id="load-more">Load More Games</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genres Section -->
+    <section id="genres" class="py-5">
+        <div class="container">
+            <div class="section-header mb-5 text-center">
+                <h2 class="fw-bold">Popular Genres</h2>
+                <p class="text-muted">Browse games by your favorite genre</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4 col-6">
+                    <div class="genre-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="genre-icon mb-3">
+                                <i class="fas fa-user-ninja"></i>
+                            </div>
+                            <h5 class="card-title">Action</h5>
+                            <p class="card-text text-muted">Fast-paced combat and adventure</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-6">
+                    <div class="genre-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="genre-icon mb-3">
+                                <i class="fas fa-hat-wizard"></i>
+                            </div>
+                            <h5 class="card-title">RPG</h5>
+                            <p class="card-text text-muted">Deep stories and character progression</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-6">
+                    <div class="genre-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="genre-icon mb-3">
+                                <i class="fas fa-ghost"></i>
+                            </div>
+                            <h5 class="card-title">Horror</h5>
+                            <p class="card-text text-muted">Terrifying experiences</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-6">
+                    <div class="genre-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="genre-icon mb-3">
+                                <i class="fas fa-racing-helmet"></i>
+                            </div>
+                            <h5 class="card-title">Racing</h5>
+                            <p class="card-text text-muted">High-speed competitions</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-6">
+                    <div class="genre-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="genre-icon mb-3">
+                                <i class="fas fa-chess"></i>
+                            </div>
+                            <h5 class="card-title">Strategy</h5>
+                            <p class="card-text text-muted">Tactical decision making</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-6">
+                    <div class="genre-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="genre-icon mb-3">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <h5 class="card-title">Sports</h5>
+                            <p class="card-text text-muted">Realistic sports simulations</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Games -->
+    <section id="upcoming" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="section-header mb-5 text-center">
+                <h2 class="fw-bold">Upcoming Releases</h2>
+                <p class="text-light">The most anticipated PC games coming soon</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="upcoming-card card border-0 bg-secondary bg-opacity-10 h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Game+1" class="card-img-top" alt="Upcoming Game">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-danger">Coming Soon</span>
+                                <span class="text-warning">
+                                    <i class="fas fa-calendar-alt me-1"></i> Nov 2023
+                                </span>
+                            </div>
+                            <h5 class="card-title">Cyber Odyssey</h5>
+                            <p class="card-text">An open-world cyberpunk RPG with deep narrative choices and stunning visuals.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="platforms">
+                                    <i class="fab fa-windows me-2"></i>
+                                    <i class="fab fa-steam me-2"></i>
+                                    <i class="fab fa-xbox"></i>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-light">Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="upcoming-card card border-0 bg-secondary bg-opacity-10 h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Game+2" class="card-img-top" alt="Upcoming Game">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-danger">Coming Soon</span>
+                                <span class="text-warning">
+                                    <i class="fas fa-calendar-alt me-1"></i> Dec 2023
+                                </span>
+                            </div>
+                            <h5 class="card-title">Eclipse: New Dawn</h5>
+                            <p class="card-text">A survival horror game set on a derelict space station with terrifying alien encounters.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="platforms">
+                                    <i class="fab fa-windows me-2"></i>
+                                    <i class="fab fa-steam"></i>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-light">Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="upcoming-card card border-0 bg-secondary bg-opacity-10 h-100">
+                        <img src="https://via.placeholder.com/600x400?text=Game+3" class="card-img-top" alt="Upcoming Game">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-danger">Coming Soon</span>
+                                <span class="text-warning">
+                                    <i class="fas fa-calendar-alt me-1"></i> Q1 2024
+                                </span>
+                            </div>
+                            <h5 class="card-title">Kingdom Eternal</h5>
+                            <p class="card-text">A massive fantasy MMORPG with player-driven economy and epic siege battles.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="platforms">
+                                    <i class="fab fa-windows me-2"></i>
+                                    <i class="fab fa-steam me-2"></i>
+                                    <i class="fab fa-itch-io"></i>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-light">Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="py-5">
+        <div class="container">
+            <div class="section-header mb-5 text-center">
+                <h2 class="fw-bold">Latest Gaming News</h2>
+                <p class="text-muted">Stay updated with the latest in PC gaming</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="news-card card border-0 shadow-sm h-100">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="https://via.placeholder.com/400x300?text=News+1" class="img-fluid h-100" alt="News Image">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <span class="badge bg-primary mb-2">Industry</span>
+                                    <h5 class="card-title">New Graphics Cards to Revolutionize PC Gaming</h5>
+                                    <p class="card-text text-muted">The latest GPU releases promise 4K gaming at 120fps for most AAA titles...</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i> 2 days ago</small>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="news-card card border-0 shadow-sm h-100">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="https://via.placeholder.com/400x300?text=News+2" class="img-fluid h-100" alt="News Image">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <span class="badge bg-success mb-2">Update</span>
+                                    <h5 class="card-title">Major Expansion Announced for Popular RPG</h5>
+                                    <p class="card-text text-muted">The developers have revealed a massive new expansion adding 30+ hours of content...</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i> 5 days ago</small>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="news-card card border-0 shadow-sm h-100">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="https://via.placeholder.com/400x300?text=News+3" class="img-fluid h-100" alt="News Image">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <span class="badge bg-warning text-dark mb-2">Review</span>
+                                    <h5 class="card-title">New Indie Game Takes Steam by Storm</h5>
+                                    <p class="card-text text-muted">This small team's passion project has surpassed 1 million sales in its first week...</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i> 1 week ago</small>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="news-card card border-0 shadow-sm h-100">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <img src="https://via.placeholder.com/400x300?text=News+4" class="img-fluid h-100" alt="News Image">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <span class="badge bg-info mb-2">Event</span>
+                                    <h5 class="card-title">Major Gaming Convention Announces 2024 Dates</h5>
+                                    <p class="card-text text-muted">The biggest annual gaming event will return with more exhibitors and surprises...</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted"><i class="far fa-clock me-1"></i> 2 weeks ago</small>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-4">Stay Updated With Gaming News</h2>
+                    <p class="lead mb-5">Subscribe to our newsletter for weekly updates on new releases, reviews, and exclusive offers.</p>
+                    
+                    <form class="newsletter-form">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                            <button class="btn btn-dark btn-lg" type="submit">Subscribe</button>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="newsletterCheck">
+                            <label class="form-check-label" for="newsletterCheck">
+                                I agree to receive emails about gaming news and offers
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 contact-bg">
+        <div class="container contact-bg">
+            <div class="section-header mb-5 text-center">
+                <h2 class="fw-bold con-font">Contact Us</h2>
+                <p class="con-font">Have questions or suggestions? Get in touch!</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-5">
+                            <h3 class="fw-bold mb-4">Send us a message</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-5">
+                            <h3 class="fw-bold mb-4">Contact Information</h3>
+                            <p class="mb-5">Feel free to reach out to us for any inquiries or feedback about our website or the games we feature.</p>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="me-4 text-primary">
+                                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Address</h5>
+                                    <p class="text-muted">123 Gaming Street, Virtual City, VC 10001</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="me-4 text-primary">
+                                    <i class="fas fa-phone-alt fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Phone</h5>
+                                    <p class="text-muted">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="me-4 text-primary">
+                                    <i class="fas fa-envelope fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Email</h5>
+                                    <p class="text-muted">contact@gamehub.example.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="me-4 text-primary">
+                                    <i class="fas fa-clock fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Working Hours</h5>
+                                    <p class="text-muted">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="social-links mt-5">
+                                <h5 class="fw-bold mb-3">Follow Us</h5>
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
+                                    <i class="fab fa-discord"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fab fa-twitch"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="fw-bold mb-4">
+                        <i class="fas fa-gamepad me-2"></i>GameHub
+                    </h4>
+                    <p class="text-muted-col">Your ultimate destination for discovering and exploring the best PC games across all genres and platforms.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-white me-3">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-white me-3">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-white me-3">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-white">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="fw-bold mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Top Games</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Genres</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Upcoming</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">News</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="fw-bold mb-4">Genres</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Action</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Adventure</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">RPG</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Strategy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Sports</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted-col text-decoration-none">Simulation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="fw-bold mb-4">Newsletter</h5>
+                    <p class="text-muted-col">Subscribe to our newsletter for the latest gaming news and updates.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <p class="small text-muted">We'll never share your email with anyone else.</p>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-secondary">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-muted-col mb-0">&copy; 2023 GameHub. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small text-muted mb-0">
+                        <a href="#" class="text-muted-col text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-muted-col text-decoration-none me-3">Terms of Service</a>
+                        <a href="#" class="text-muted-col text-decoration-none">Cookies</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+</body>
+</html>
