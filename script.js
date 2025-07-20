@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Sample game data
     const games = [
         {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayGames(start, end) {
         for (let i = start; i < end && i < games.length; i++) {
             const game = games[i];
-            
+
             const gameCard = document.createElement('div');
             gameCard.className = 'col-lg-4 col-md-6 fade-in';
             gameCard.innerHTML = `
@@ -102,9 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span class="badge bg-primary">${game.genre}</span>
                             <div class="platforms">
-                                ${game.platforms.map(platform => 
-                                    `<i class="fab fa-${platform} me-1"></i>`
-                                ).join('')}
+                                ${game.platforms.map(platform =>
+                `<i class="fab fa-${platform} me-1"></i>`
+            ).join('')}
                             </div>
                         </div>
                         <h5 class="card-title">${game.title}</h5>
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            
+
             gamesContainer.appendChild(gameCard);
         }
     }
@@ -129,15 +129,15 @@ document.addEventListener('DOMContentLoaded', function() {
     displayGames(0, displayedGames);
 
     // Load more games
-    loadMoreBtn.addEventListener('click', function() {
+    loadMoreBtn.addEventListener('click', function () {
         const prevDisplayed = displayedGames;
         displayedGames += 3;
         displayGames(prevDisplayed, displayedGames);
-        
+
         if (displayedGames >= games.length) {
             loadMoreBtn.style.display = 'none';
         }
-        
+
         // Scroll to the newly loaded games
         setTimeout(() => {
             const newCards = document.querySelectorAll('.fade-in');
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Navbar scroll effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Back to top button
     const backToTopBtn = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 300) {
             backToTopBtn.classList.add('active');
         } else {
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    backToTopBtn.addEventListener('click', function(e) {
+    backToTopBtn.addEventListener('click', function (e) {
         e.preventDefault();
         window.scrollTo({
             top: 0,
@@ -176,12 +176,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Newsletter form submission
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
+        newsletterForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const emailInput = this.querySelector('input[type="email"]');
             if (emailInput.value) {
@@ -208,10 +208,77 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form submission
     const contactForm = document.querySelector('#contact form');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             alert('Thank you for your message! We will get back to you soon.');
             this.reset();
         });
+    }
+});
+
+// Enhanced Slideshow with Dot Navigation
+document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.game-slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+
+    // Convert accent colors to RGB for pulse animation
+    document.querySelectorAll('.game-slide').forEach(slide => {
+        const accent = getComputedStyle(slide).getPropertyValue('--game-accent');
+        const rgb = hexToRgb(accent);
+        slide.style.setProperty('--game-accent-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
+    });
+
+    function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+            slide.querySelector('.game-content').style.animation = 'none';
+            void slide.querySelector('.game-content').offsetWidth; // Trigger reflow
+        });
+
+        // Update dots
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Show selected slide
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        slides[index].querySelector('.game-content').style.animation = 'slideInUp 0.8s both';
+
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    // Dot click events
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+    });
+
+    // Auto-rotate slides
+    const slideInterval = setInterval(nextSlide, 5000);
+
+    // Pause on hover
+    const slideshow = document.querySelector('.game-slideshow');
+    slideshow.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    slideshow.addEventListener('mouseleave', () => {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+    });
+
+    // Initialize first slide
+    showSlide(0);
+
+    // Helper function to convert hex to rgb
+    function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : { r: 0, g: 0, b: 0 };
     }
 });
