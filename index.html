@@ -52,12 +52,45 @@
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
-                <form class="d-flex ms-3">
-                    <input class="form-control me-2" type="search" placeholder="Search games...">
+
+                <!-- Search Form (in navbar) -->
+                <form id="gameSearchForm" class="d-flex ms-3">
+                    <input id="gameSearchInput" class="form-control me-2" type="search" placeholder="Search games..."
+                        required>
                     <button class="btn btn-outline-light" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
+
+
+                <!-- Results Modal -->
+                <!-- HTML (add this to your existing modal code) -->
+                <div class="modal fade game-modal" id="gameResultsModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-primary fw-bold" id="resultTitle">Search Results</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="searchStatus" class="text-center py-5">
+                                    <div class="spinner-border text-primary searching-animation"
+                                        style="width: 3rem; height: 3rem;" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p class="mt-4 mb-0 text-secondary" id="resultDescription">Searching game
+                                        databases...</p>
+                                </div>
+                                <div id="downloadOptions" class="row g-4 py-3"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary"
+                                    data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -68,11 +101,10 @@
 
     <!-- Premium Games Hero Section -->
     <header class="games-hero" id="home">
-        <!-- Game Slideshow -->
         <div class="game-slideshow">
             <!-- Slide 1 - BGMI -->
             <div class="game-slide active"
-                style="--game-accent: #FF4B2B; background-image: url('https://wallpapers.com/images/hd/bgmi-smoky-character-0251nvedwudnllfe.jpg')">
+                style="--game-accent: #FF4B2B; background-image: url('https://wallpapers.com/images/hd/bgmi-cyberpunk-street-cxapqv3ux77orya3.jpg')">
                 <div class="game-content">
                     <div class="game-card">
                         <div class="game-header">
@@ -83,7 +115,7 @@
                         <p class="game-desc">Dominate the battlegrounds with India's favorite mobile shooter</p>
                         <div class="game-footer">
                             <span class="game-size">1.2 GB</span>
-                            <a href="https://www.battlegroundsmobileindiaforpc.in/" class="game-download-btn pulse">
+                            <a href="https://www.battlegroundsmobileindia.com/" class="game-download-btn pulse">
                                 <i class="fas fa-cloud-download-alt"></i> Install Now
                             </a>
                         </div>
@@ -104,7 +136,7 @@
                         <p class="game-desc">10-minute matches packed with intense action and strategy</p>
                         <div class="game-footer">
                             <span class="game-size">800 MB</span>
-                            <a href="https://play.google.com/store/apps/details?id=com.dts.freefiremax&hl=en_IN&pli=1"
+                            <a href="https://play.google.com/store/apps/details?id=com.dts.freefiremax"
                                 class="game-download-btn pulse">
                                 <i class="fas fa-cloud-download-alt"></i> Install Now
                             </a>
@@ -142,6 +174,7 @@
             <span class="dot" data-slide="2"></span>
         </div>
     </header>
+
 
     <!-- Top Games Section -->
     <section id="top-games" class="py-5 bg-light">
@@ -265,6 +298,9 @@
             </div>
         </div>
     </section>
+
+
+
     <!-- Genres Section -->
     <section id="genres" class="py-5">
         <div class="container">
@@ -282,7 +318,8 @@
                             </div>
                             <h5 class="card-title">Action</h5>
                             <p class="card-text text-muted">Fast-paced combat and adventure</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                            <a href="https://store.epicgames.com/en-US/c/action-games?sortBy=releaseDate&sortDir=DESC&count=40"
+                                class="btn btn-sm btn-outline-primary">View Games</a>
                         </div>
                     </div>
                 </div>
@@ -295,7 +332,8 @@
                             </div>
                             <h5 class="card-title">RPG</h5>
                             <p class="card-text text-muted">Deep stories and character progression</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                            <a href="https://store.epicgames.com/en-US/c/rpg-games?sortBy=releaseDate&sortDir=DESC&count=40"
+                                class="btn btn-sm btn-outline-primary">View Games</a>
                         </div>
                     </div>
                 </div>
@@ -308,7 +346,8 @@
                             </div>
                             <h5 class="card-title">Horror</h5>
                             <p class="card-text text-muted">Terrifying experiences</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                            <a href="https://store.epicgames.com/en-US/c/horror-games?sortBy=releaseDate&sortDir=DESC&count=40"
+                                class="btn btn-sm btn-outline-primary">View Games</a>
                         </div>
                     </div>
                 </div>
@@ -321,7 +360,8 @@
                             </div>
                             <h5 class="card-title">Racing</h5>
                             <p class="card-text text-muted">High-speed competitions</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                            <a href="https://store.epicgames.com/en-US/c/racing-games?sortBy=releaseDate&sortDir=DESC&count=40"
+                                class="btn btn-sm btn-outline-primary">View Games</a>
                         </div>
                     </div>
                 </div>
@@ -334,7 +374,8 @@
                             </div>
                             <h5 class="card-title">Strategy</h5>
                             <p class="card-text text-muted">Tactical decision making</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                            <a href="https://store.epicgames.com/en-US/c/strategy-games?sortBy=releaseDate&sortDir=DESC&count=40"
+                                class="btn btn-sm btn-outline-primary">View Games</a>
                         </div>
                     </div>
                 </div>
@@ -347,14 +388,14 @@
                             </div>
                             <h5 class="card-title">Sports</h5>
                             <p class="card-text text-muted">Realistic sports simulations</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Games</a>
+                            <a href="https://www.ea.com/games/library/pc-download"
+                                class="btn btn-sm btn-outline-primary">View Games</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Upcoming Games -->
     <section id="upcoming" class="py-5 bg-dark text-white">
         <div class="container">
@@ -364,78 +405,85 @@
             </div>
 
             <div class="row g-4">
+                <!-- Starfield -->
                 <div class="col-lg-4 col-md-6">
                     <div class="upcoming-card card border-0 bg-secondary bg-opacity-10 h-100">
-                        <img src="https://via.placeholder.com/600x400?text=Game+1" class="card-img-top"
-                            alt="Upcoming Game">
-                        <div class="card-body">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1716740/header.jpg"
+                            class="card-img-top" alt="Starfield" style="height: 200px; object-fit: cover;">
+                        <div class="card-body card-col">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="badge bg-danger">Coming Soon</span>
                                 <span class="text-warning">
                                     <i class="fas fa-calendar-alt me-1"></i> Nov 2023
                                 </span>
                             </div>
-                            <h5 class="card-title">Cyber Odyssey</h5>
-                            <p class="card-text">An open-world cyberpunk RPG with deep narrative choices and stunning
-                                visuals.</p>
+                            <h5 class="card-title">Starfield</h5>
+                            <p class="card-text">Bethesda's epic space RPG featuring over 1,000 planets to explore, deep
+                                character customization, and a massive sci-fi story.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="platforms">
                                     <i class="fab fa-windows me-2"></i>
                                     <i class="fab fa-steam me-2"></i>
                                     <i class="fab fa-xbox"></i>
                                 </div>
-                                <a href="#" class="btn btn-sm btn-outline-light">Wishlist</a>
+                                <a href="https://store.steampowered.com/app/1716740/Starfield/"
+                                    class="btn btn-sm btn-outline-light">Wishlist</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Cities: Skylines II -->
                 <div class="col-lg-4 col-md-6">
                     <div class="upcoming-card card border-0 bg-secondary bg-opacity-10 h-100">
-                        <img src="https://via.placeholder.com/600x400?text=Game+2" class="card-img-top"
-                            alt="Upcoming Game">
-                        <div class="card-body">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/949230/header.jpg"
+                            class="card-img-top" alt="Cities: Skylines II" style="height: 200px; object-fit: cover;">
+                        <div class="card-body card-col">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <span class="badge bg-danger">Coming Soon</span>
                                 <span class="text-warning">
-                                    <i class="fas fa-calendar-alt me-1"></i> Dec 2023
+                                    <i class="fas fa-calendar-alt me-1"></i> Oct 2023
                                 </span>
                             </div>
-                            <h5 class="card-title">Eclipse: New Dawn</h5>
-                            <p class="card-text">A survival horror game set on a derelict space station with terrifying
-                                alien encounters.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="platforms">
-                                    <i class="fab fa-windows me-2"></i>
-                                    <i class="fab fa-steam"></i>
-                                </div>
-                                <a href="#" class="btn btn-sm btn-outline-light">Wishlist</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="upcoming-card card border-0 bg-secondary bg-opacity-10 h-100">
-                        <img src="https://via.placeholder.com/600x400?text=Game+3" class="card-img-top"
-                            alt="Upcoming Game">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="badge bg-danger">Coming Soon</span>
-                                <span class="text-warning">
-                                    <i class="fas fa-calendar-alt me-1"></i> Q1 2024
-                                </span>
-                            </div>
-                            <h5 class="card-title">Kingdom Eternal</h5>
-                            <p class="card-text">A massive fantasy MMORPG with player-driven economy and epic siege
-                                battles.</p>
+                            <h5 class="card-title">Cities: Skylines II</h5>
+                            <p class="card-text">The sequel to the award-winning city builder with improved graphics,
+                                deeper simulation, and more realistic urban planning.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="platforms">
                                     <i class="fab fa-windows me-2"></i>
                                     <i class="fab fa-steam me-2"></i>
-                                    <i class="fab fa-itch-io"></i>
+                                    <i class="fab fa-xbox"></i>
                                 </div>
-                                <a href="#" class="btn btn-sm btn-outline-light">Wishlist</a>
+                                <a href="https://store.steampowered.com/app/949230/Cities_Skylines_II/"
+                                    class="btn btn-sm btn-outline-light">Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payday 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="upcoming-card card border-0 bg-secondary bg-opacity-10 h-100">
+                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272080/header.jpg"
+                            class="card-img-top" alt="Payday 3" style="height: 200px; object-fit: cover;">
+                        <div class="card-body card-col">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-danger">Coming Soon</span>
+                                <span class="text-warning">
+                                    <i class="fas fa-calendar-alt me-1"></i> Sep 2023
+                                </span>
+                            </div>
+                            <h5 class="card-title">Payday 3</h5>
+                            <p class="card-text">The next installment in the popular co-op heist shooter series with
+                                improved mechanics, new locations, and more customization.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="platforms">
+                                    <i class="fab fa-windows me-2"></i>
+                                    <i class="fab fa-steam me-2"></i>
+                                    <i class="fab fa-xbox"></i>
+                                </div>
+                                <a href="https://store.steampowered.com/app/1272080/PAYDAY_3/"
+                                    class="btn btn-sm btn-outline-light">Wishlist</a>
                             </div>
                         </div>
                     </div>
@@ -443,6 +491,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- News Section -->
     <section id="news" class="py-5">
