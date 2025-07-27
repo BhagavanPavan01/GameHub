@@ -827,3 +827,187 @@ a:hover {
         font-size: 2rem;
     }
 }
+
+
+/* Search Animation */
+.searching-animation {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Result Cards */
+.game-option-card {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.game-option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.option-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Modal Animation */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out, opacity 0.3s ease;
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-option-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Button fixes */
+.game-option-card .btn {
+    pointer-events: auto !important;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.game-option-card .btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.game-option-card .btn-outline-secondary:hover {
+    background-color: rgba(108, 117, 125, 0.5);
+}
+
+.game-option-card .list-group-item {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Card hover effect */
+.game-option-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-option-card {
+        margin-bottom: 1rem;
+    }
+    
+    .option-icon {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* Modal and Close Button Styles */
+.game-modal .btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.game-modal .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* Button Styles */
+.game-option-card .btn {
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-option-card .btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.game-option-card .btn:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Card Hover Effects */
+.game-option-card {
+    transition: all 0.3s ease;
+}
+
+.game-option-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .game-option-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .game-option-card .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+.searching-animation {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .game-option-card {
+            transition: all 0.3s ease;
+        }
+        .game-option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .option-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }

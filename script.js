@@ -285,192 +285,203 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // =========================== Search box and functions ===========================
 
-document.getElementById('gameSearchForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const query = document.getElementById('gameSearchInput').value.trim();
-    if (!query) return;
+// document.addEventListener('DOMContentLoaded', function () {
+//     // Get elements
+//     const searchForm = document.getElementById('gameSearchForm');
+//     const searchInput = document.getElementById('gameSearchInput');
+//     const resultsModal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
+//     const searchStatus = document.getElementById('searchStatus');
+//     const downloadOptions = document.getElementById('downloadOptions');
+//     const searchedGameElement = document.getElementById('searchedGame');
+
+//     // Search form handler
+//     searchForm.addEventListener('submit', function (e) {
+//         e.preventDefault();
+//         const gameName = searchInput.value.trim();
+
+//         if (gameName) {
+//             showLoading(gameName);
+//             setTimeout(() => showResults(gameName), 1000);
+//         }
+//     });
+
+//     function showLoading(gameName) {
+//         searchedGameElement.textContent = gameName;
+//         searchStatus.classList.remove('d-none');
+//         downloadOptions.classList.add('d-none');
+//         resultsModal.show();
+//     }
+
+//     function showResults(gameName) {
+//         searchStatus.classList.add('d-none');
+//         downloadOptions.classList.remove('d-none');
+//         downloadOptions.innerHTML = '';
+
+//         const options = createGameOptions(gameName);
+//         options.forEach(option => {
+//             downloadOptions.appendChild(createOptionCard(option));
+//         });
+//     }
+
+//     function createGameOptions(gameName) {
+//         return [
+//             {
+//                 title: "Search on Gaming Sites",
+//                 icon: "fa-search",
+//                 color: "info",
+//                 links: [
+//                     createLink("Steam", `https://store.steampowered.com/search/?term=${encodeURIComponent(gameName)}`, "https://store.steampowered.com/"),
+//                     createLink("Epic Games", `https://store.epicgames.com/en-US/browse?q=${encodeURIComponent(gameName)}`, "https://store.epicgames.com/en-US"),
+//                     createLink("GOG", `https://www.gog.com/en/games?query=${encodeURIComponent(gameName)}`, "https://www.gog.com/en/")
+//                 ]
+//             },
+//             {
+//                 title: "Direct Store Links",
+//                 icon: "fa-store",
+//                 color: "primary",
+//                 links: [
+//                     createLink("Steam Store", "https://store.steampowered.com/"),
+//                     createLink("Epic Games Store", "https://store.epicgames.com/en-US"),
+//                     createLink("GOG Store", "https://www.gog.com/en/")
+//                 ]
+//             },
+//             {
+//                 title: "Other Options",
+//                 icon: "fa-ellipsis-h",
+//                 color: "secondary",
+//                 links: [
+//                     createLink("Google Search", `https://www.google.com/search?q=${encodeURIComponent(gameName)}+game`),
+//                     createLink("YouTube Videos", `https://www.youtube.com/results?search_query=${encodeURIComponent(gameName)}+gameplay`)
+//                 ]
+//             }
+//         ];
+//     }
+
+//     function createLink(name, url, directUrl = null) {
+//         return { name, url, directUrl };
+//     }
+
+//     function createOptionCard(option) {
+//         const col = document.createElement('div');
+//         col.className = 'col-md-4 mb-4';
+
+//         const card = document.createElement('div');
+//         card.className = `game-option-card card bg-dark text-white border-${option.color}`;
+
+//         const cardBody = document.createElement('div');
+//         cardBody.className = 'card-body';
+
+//         // Card header with icon and title
+//         const icon = document.createElement('i');
+//         icon.className = `option-icon fas ${option.icon} text-${option.color} mb-3 d-block text-center`;
+
+//         const title = document.createElement('h5');
+//         title.className = 'card-title text-center';
+//         title.textContent = option.title;
+
+//         cardBody.appendChild(icon);
+//         cardBody.appendChild(title);
+
+//         // Links list
+//         const listGroup = document.createElement('div');
+//         listGroup.className = 'list-group list-group-flush mt-3';
+
+//         option.links.forEach(link => {
+//             const listItem = document.createElement('div');
+//             listItem.className = 'list-group-item bg-transparent text-white border-secondary p-1';
+
+//             const btnGroup = document.createElement('div');
+//             btnGroup.className = 'd-flex';
+
+//             // Main action button
+//             const mainBtn = document.createElement('button');
+//             mainBtn.className = 'btn btn-sm btn-outline-light flex-grow-1 text-start';
+//             mainBtn.textContent = link.name;
+//             mainBtn.addEventListener('click', () => window.open(link.url, '_blank'));
+
+//             btnGroup.appendChild(mainBtn);
+
+//             // Direct link button (if available)
+//             if (link.directUrl) {
+//                 const directBtn = document.createElement('button');
+//                 directBtn.className = 'btn btn-sm btn-outline-secondary ms-2';
+//                 directBtn.innerHTML = '<i class="fas fa-home"></i>';
+//                 directBtn.title = 'Go to homepage';
+//                 directBtn.addEventListener('click', (e) => {
+//                     e.stopPropagation();
+//                     window.open(link.directUrl, '_blank');
+//                 });
+//                 btnGroup.appendChild(directBtn);
+//             }
+
+//             listItem.appendChild(btnGroup);
+//             listGroup.appendChild(listItem);
+//         });
+
+//         cardBody.appendChild(listGroup);
+//         card.appendChild(cardBody);
+//         col.appendChild(card);
+
+//         return col;
+//     }
+
+//     // Ensure close buttons work
+//     document.querySelectorAll('[data-bs-dismiss="modal"]').forEach(btn => {
+//         btn.addEventListener('click', () => resultsModal.hide());
+//     });
+// });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the modal instance
+    const resultsModal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
     
-    const modal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
-    
-    // Show loading state
-    document.getElementById('resultTitle').textContent = "Searching Games";
-    document.getElementById('resultDescription').textContent = `Searching for "${query}"...`;
-    document.getElementById('downloadOptions').innerHTML = '';
-    modal.show();
-
-    try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Enhanced game database with direct download links
-        const gameDatabase = {
-            "gta": {
-                title: "Grand Theft Auto Series",
-                platforms: [
-                    { 
-                        name: "Rockstar Games", 
-                        icon: "fa-rockrms", 
-                        color: "btn-danger", 
-                        action: "Download", 
-                        link: "https://www.rockstargames.com/downloads",
-                        popupWidth: 800,
-                        popupHeight: 600
-                    },
-                    { 
-                        name: "Steam", 
-                        icon: "fa-steam", 
-                        color: "btn-primary", 
-                        action: "Purchase", 
-                        link: "https://store.steampowered.com/search/?term=grand+theft+auto",
-                        popupWidth: 1000,
-                        popupHeight: 700
-                    },
-                    { 
-                        name: "Epic Games", 
-                        icon: "fa-epic-games", 
-                        color: "btn-dark", 
-                        action: "Get Free", 
-                        link: "https://store.epicgames.com/en-US/browse?q=grand%20theft%20auto",
-                        popupWidth: 1000,
-                        popupHeight: 700
-                    }
-                ]
-            },
-            "minecraft": {
-                title: "Minecraft",
-                platforms: [
-                    { 
-                        name: "Official Site", 
-                        icon: "fa-globe", 
-                        color: "btn-success", 
-                        action: "Download", 
-                        link: "https://www.minecraft.net/en-us/download",
-                        popupWidth: 900,
-                        popupHeight: 650
-                    },
-                    { 
-                        name: "Microsoft Store", 
-                        icon: "fa-microsoft", 
-                        color: "btn-primary", 
-                        action: "Get", 
-                        link: "https://www.microsoft.com/store/search?q=minecraft",
-                        popupWidth: 900,
-                        popupHeight: 650
-                    }
-                ]
-            },
-            "fortnite": {
-                title: "Fortnite",
-                platforms: [
-                    { 
-                        name: "Epic Games", 
-                        icon: "fa-epic-games", 
-                        color: "btn-dark", 
-                        action: "Download", 
-                        link: "https://store.epicgames.com/en-US/p/fortnite",
-                        popupWidth: 1000,
-                        popupHeight: 700
-                    },
-                    { 
-                        name: "GeForce Now", 
-                        icon: "fa-nvidia", 
-                        color: "btn-success", 
-                        action: "Cloud Play", 
-                        link: "https://play.geforcenow.com/games?search=fortnite",
-                        popupWidth: 900,
-                        popupHeight: 600
-                    }
-                ]
-            }
-        };
-
-        // Find matching game (case insensitive)
-        const gameKey = Object.keys(gameDatabase).find(key => 
-            query.toLowerCase().includes(key.toLowerCase())
-        ) || 'default';
-
-        const game = gameKey === 'default' ? {
-            title: query,
-            platforms: [
-                { 
-                    name: "Steam", 
-                    icon: "fa-steam", 
-                    color: "btn-primary", 
-                    action: "Search", 
-                    link: `https://store.steampowered.com/search/?term=${encodeURIComponent(query)}`,
-                    popupWidth: 1000,
-                    popupHeight: 700
-                },
-                { 
-                    name: "Epic Games", 
-                    icon: "fa-epic-games", 
-                    color: "btn-dark", 
-                    action: "Search", 
-                    link: `https://store.epicgames.com/en-US/browse?q=${encodeURIComponent(query)}`,
-                    popupWidth: 1000,
-                    popupHeight: 700
-                },
-                { 
-                    name: "Google", 
-                    icon: "fa-google", 
-                    color: "btn-info", 
-                    action: "Search Web", 
-                    link: `https://www.google.com/search?q=${encodeURIComponent(query + " game download")}`,
-                    popupWidth: 1000,
-                    popupHeight: 700
-                }
-            ]
-        } : gameDatabase[gameKey];
-
-        // Update UI
-        document.getElementById('resultTitle').textContent = game.title;
-        document.getElementById('resultDescription').textContent = `Available on ${game.platforms.length} platforms`;
-        document.getElementById('searchStatus').style.display = 'none';
-        
-        // Display platforms
-        const optionsDiv = document.getElementById('downloadOptions');
-        game.platforms.forEach((platform, index) => {
-            const col = document.createElement('div');
-            col.className = 'col-12 col-md-6 col-lg-4 mb-3';
-            col.style.setProperty('--animation-order', index);
-            col.innerHTML = `
-                <div class="game-card card h-100 border-0">
-                    <div class="card-body text-center py-4">
-                        <div class="platform-icon text-primary">
-                            <i class="fab ${platform.icon}"></i>
-                        </div>
-                        <h5 class="text-white mb-3">${platform.name}</h5>
-                        <button class="btn ${platform.color} btn-sm rounded-pill px-4 btn-download">
-                            ${platform.action} <i class="fas fa-arrow-right ms-2"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            // Add click handler for popup window
-            const btn = col.querySelector('.btn-download');
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const width = platform.popupWidth || 800;
-                const height = platform.popupHeight || 600;
-                const left = (screen.width - width) / 2;
-                const top = (screen.height - height) / 2;
-                
-                window.open(
-                    platform.link,
-                    `${platform.name}_${game.title}`,
-                    `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,toolbar=no,location=no`
-                );
-            });
-            
-            optionsDiv.appendChild(col);
+    // Make sure close buttons work
+    document.querySelectorAll('[data-bs-dismiss="modal"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            resultsModal.hide();
         });
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize modal
+    const resultsModal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
+    
+    // Make sure links work in modal
+    document.querySelectorAll('#gameResultsModal a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Let the default anchor behavior handle the navigation
+            // target="_blank" will make it open in new tab
+        });
+    });
+
+    // Search form submission handler
+    document.getElementById('gameSearchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const searchTerm = document.getElementById('gameSearchInput').value.trim();
+        if (searchTerm) {
+            resultsModal.show();
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchForm = document.getElementById('gameSearchForm');
+    const searchInput = document.getElementById('gameSearchInput');
+    const resultsModal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
+
+    // Handle form submission
+    searchForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
         
-    } catch (error) {
-        document.getElementById('resultTitle').textContent = "Search Error";
-        document.getElementById('resultDescription').textContent = `Couldn't complete search for "${query}". Please try again.`;
-        document.getElementById('searchStatus').style.display = 'block';
-        document.getElementById('downloadOptions').innerHTML = '';
-        console.error("Search error:", error);
-    }
+        if (searchInput.value.trim()) {
+            resultsModal.show();
+            
+            // Optional: You can add search functionality here
+            // For example: filter games based on searchInput.value
+        }
+    });
 });

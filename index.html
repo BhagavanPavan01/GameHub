@@ -22,17 +22,25 @@
 </head>
 
 <body>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
+            <!-- Brand/logo on left -->
             <a class="navbar-brand game-logo" href="#">
                 <i class="fas fa-gamepad me-2"></i>GameHub
             </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <!-- Empty div pushes content right -->
+                <div class="me-auto"></div>
+
+                <!-- Navigation Links -->
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" href="#home">Home</a>
                     </li>
@@ -53,49 +61,97 @@
                     </li>
                 </ul>
 
-                <!-- Search Form (in navbar) -->
+                <!-- Search Form -->
                 <form id="gameSearchForm" class="d-flex ms-3">
-                    <input id="gameSearchInput" class="form-control me-2" type="search" placeholder="Search games..."
-                        required>
-                    <button class="btn btn-outline-light" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-
-
-                <!-- Results Modal -->
-                <!-- HTML (add this to your existing modal code) -->
-                <div class="modal fade game-modal" id="gameResultsModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title text-primary fw-bold" id="resultTitle">Search Results</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="searchStatus" class="text-center py-5">
-                                    <div class="spinner-border text-primary searching-animation"
-                                        style="width: 3rem; height: 3rem;" role="status">
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                    <p class="mt-4 mb-0 text-secondary" id="resultDescription">Searching game
-                                        databases...</p>
-                                </div>
-                                <div id="downloadOptions" class="row g-4 py-3"></div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-primary"
-                                    data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
+                    <div class="input-group">
+                        <input id="gameSearchInput" class="form-control" type="text" placeholder="Search games..."
+                            required>
+                        <button class="btn btn-outline-primary" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </nav>
 
 
+
+
+    <!-- Results Modal - Place this right before closing tag -->
+    <div class="modal fade game-modal" id="gameResultsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary fw-bold">Search Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 py-3">
+                        <!-- Gaming Sites Card -->
+                        <div class="col-md-4">
+                            <div class="game-option-card card h-100 border-info">
+                                <div class="card-body text-center">
+                                    <i class="option-icon fas fa-gamepad text-info"></i>
+                                    <h5 class="card-title">Gaming Sites</h5>
+                                    <div class="list-group list-group-flush">
+                                        <a href="https://store.steampowered.com/"
+                                            class="list-group-item list-group-item-action" target="_blank">Steam</a>
+                                        <a href="https://store.epicgames.com/"
+                                            class="list-group-item list-group-item-action" target="_blank">Epic
+                                            Games</a>
+                                        <a href="https://www.gog.com/" class="list-group-item list-group-item-action"
+                                            target="_blank">GOG</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Official Links Card -->
+                        <div class="col-md-4">
+                            <div class="game-option-card card h-100 border-primary">
+                                <div class="card-body text-center">
+                                    <i class="option-icon fas fa-globe text-primary"></i>
+                                    <h5 class="card-title">Official Links</h5>
+                                    <div class="list-group list-group-flush">
+                                        <a href="https://www.rockstargames.com/"
+                                            class="list-group-item list-group-item-action" target="_blank">Rockstar
+                                            Games</a>
+                                        <a href="https://www.ea.com/" class="list-group-item list-group-item-action"
+                                            target="_blank">EA Games</a>
+                                        <a href="https://www.ubisoft.com/"
+                                            class="list-group-item list-group-item-action" target="_blank">Ubisoft</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Search Engines Card -->
+                        <div class="col-md-4">
+                            <div class="game-option-card card h-100 border-success">
+                                <div class="card-body text-center">
+                                    <i class="option-icon fas fa-search text-success"></i>
+                                    <h5 class="card-title">Search Engines</h5>
+                                    <div class="list-group list-group-flush">
+                                        <a href="https://www.google.com/search?q=games"
+                                            class="list-group-item list-group-item-action" target="_blank">Google</a>
+                                        <a href="https://www.youtube.com/results?search_query=games"
+                                            class="list-group-item list-group-item-action" target="_blank">YouTube</a>
+                                        <a href="https://www.metacritic.com/search/game/"
+                                            class="list-group-item list-group-item-action"
+                                            target="_blank">Metacritic</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -356,7 +412,7 @@
                     <div class="genre-card card h-100 border-0 shadow-sm">
                         <div class="card-body text-center">
                             <div class="genre-icon mb-3">
-                                <i class="fas fa-racing-helmet"></i>
+                                <i class="fa-solid fa-motorcycle"></i>
                             </div>
                             <h5 class="card-title">Racing</h5>
                             <p class="card-text text-muted">High-speed competitions</p>
@@ -506,8 +562,8 @@
                     <div class="news-card card border-0 shadow-sm h-100">
                         <div class="row g-0">
                             <div class="col-md-5">
-                                <img src="https://via.placeholder.com/400x300?text=News+1" class="img-fluid h-100"
-                                    alt="News Image">
+                                <img src="https://geekawhat.com/wp-content/uploads/2023/08/Best-GPUs-Under-700-Feature-Image.jpg"
+                                    class="img-fluid h-100" alt="News Image">
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -529,8 +585,8 @@
                     <div class="news-card card border-0 shadow-sm h-100">
                         <div class="row g-0">
                             <div class="col-md-5">
-                                <img src="https://via.placeholder.com/400x300?text=News+2" class="img-fluid h-100"
-                                    alt="News Image">
+                                <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2024/12/warframe-1999-logo-over-tga-2024-gameplay-trailer-crew-still-frame.jpg"
+                                    class="img-fluid h-100" alt="News Image">
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -552,8 +608,8 @@
                     <div class="news-card card border-0 shadow-sm h-100">
                         <div class="row g-0">
                             <div class="col-md-5">
-                                <img src="https://via.placeholder.com/400x300?text=News+3" class="img-fluid h-100"
-                                    alt="News Image">
+                                <img src="https://assetsio.gnwcdn.com/Peak-steam-header.jpg?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp"
+                                    class="img-fluid h-100" alt="News Image">
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -575,8 +631,8 @@
                     <div class="news-card card border-0 shadow-sm h-100">
                         <div class="row g-0">
                             <div class="col-md-5">
-                                <img src="https://via.placeholder.com/400x300?text=News+4" class="img-fluid h-100"
-                                    alt="News Image">
+                                <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2025/01/2025-event-main.jpg"
+                                    class="img-fluid h-100" alt="News Image">
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
