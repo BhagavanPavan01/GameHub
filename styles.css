@@ -835,9 +835,20 @@ a:hover {
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.1); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Result Cards */
@@ -846,12 +857,12 @@ a:hover {
     border-radius: 10px;
     overflow: hidden;
     height: 100%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .game-option-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .option-icon {
@@ -915,7 +926,7 @@ a:hover {
     .game-option-card {
         margin-bottom: 1rem;
     }
-    
+
     .option-icon {
         font-size: 1.5rem;
     }
@@ -964,6 +975,7 @@ a:hover {
         transform: scale(0, 0);
         opacity: 0.5;
     }
+
     100% {
         transform: scale(20, 20);
         opacity: 0;
@@ -985,7 +997,7 @@ a:hover {
     .game-option-card {
         margin-bottom: 1.5rem;
     }
-    
+
     .game-option-card .btn {
         padding: 0.25rem 0.5rem;
         font-size: 0.8rem;
@@ -993,21 +1005,262 @@ a:hover {
 }
 
 .searching-animation {
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .game-option-card {
-            transition: all 0.3s ease;
-        }
-        .game-option-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .option-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.game-option-card {
+    transition: all 0.3s ease;
+}
+
+.game-option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.option-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+
+/* Unique CSS classes to avoid conflicts */
+.game-zone-container {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.game-zone-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.game-zone-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d3748;
+    position: relative;
+    display: inline-block;
+}
+
+.game-zone-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background: #4a6cf7;
+    border-radius: 2px;
+}
+
+.game-zone-view-all {
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.game-zone-view-all:hover {
+    background: #3a5bd9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 108, 247, 0.3);
+}
+
+.game-zone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.game-zone-item {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.game-zone-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-zone-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.game-zone-item:hover .game-zone-image {
+    transform: scale(1.05);
+}
+
+.game-zone-details {
+    padding: 12px;
+}
+
+.game-zone-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.game-zone-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #718096;
+}
+
+.game-zone-rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.game-zone-rating i {
+    color: #f6ad55;
+    font-size: 14px;
+}
+
+.game-zone-plays {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.game-zone-plays i {
+    font-size: 14px;
+}
+
+.game-zone-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #4a6cf7;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.game-zone-new {
+    background: #48bb78;
+}
+
+.game-zone-hot {
+    background: #f56565;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-zone-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .game-zone-image {
+        height: 100px;
+    }
+
+    .game-zone-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-zone-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+    }
+
+    .game-zone-image {
+        height: 80px;
+    }
+
+    .game-zone-name {
+        font-size: 14px;
+    }
+}
+
+/* Animation classes with unique names */
+@keyframes gameZoneFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.game-zone-animate {
+    animation: gameZoneFadeIn 0.6s ease forwards;
+}
+
+.game-zone-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.game-zone-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.game-zone-delay-3 {
+    animation-delay: 0.3s;
+}
+
+.game-zone-delay-4 {
+    animation-delay: 0.4s;
+}
+
+.game-zone-delay-5 {
+    animation-delay: 0.5s;
+}

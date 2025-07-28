@@ -432,33 +432,33 @@ document.addEventListener('DOMContentLoaded', function () {
 // });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Get the modal instance
     const resultsModal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
-    
+
     // Make sure close buttons work
     document.querySelectorAll('[data-bs-dismiss="modal"]').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             resultsModal.hide();
         });
     });
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize modal
     const resultsModal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
-    
+
     // Make sure links work in modal
     document.querySelectorAll('#gameResultsModal a').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             // Let the default anchor behavior handle the navigation
             // target="_blank" will make it open in new tab
         });
     });
 
     // Search form submission handler
-    document.getElementById('gameSearchForm').addEventListener('submit', function(e) {
+    document.getElementById('gameSearchForm').addEventListener('submit', function (e) {
         e.preventDefault();
         const searchTerm = document.getElementById('gameSearchInput').value.trim();
         if (searchTerm) {
@@ -468,20 +468,64 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const searchForm = document.getElementById('gameSearchForm');
     const searchInput = document.getElementById('gameSearchInput');
     const resultsModal = new bootstrap.Modal(document.getElementById('gameResultsModal'));
 
     // Handle form submission
-    searchForm.addEventListener('submit', function(e) {
+    searchForm.addEventListener('submit', function (e) {
         e.preventDefault(); // Prevent default form submission
-        
+
         if (searchInput.value.trim()) {
             resultsModal.show();
-            
+
             // Optional: You can add search functionality here
             // For example: filter games based on searchInput.value
         }
+    });
+});
+
+
+
+// JavaScript with unique function names
+document.addEventListener('DOMContentLoaded', function () {
+    // Game item click animation
+    const gameItems = document.querySelectorAll('.game-zone-item');
+
+    gameItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+            // Animation on click
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+    });
+
+    // View all button animation
+    const viewAllBtn = document.querySelector('.game-zone-view-all');
+    if (viewAllBtn) {
+        viewAllBtn.addEventListener('click', function (e) {
+            this.innerHTML = 'Opening... <i class="fas fa-spinner fa-spin"></i>';
+            setTimeout(() => {
+                this.innerHTML = 'View All <i class="fas fa-chevron-right"></i>';
+            }, 1000);
+        });
+    }
+
+    // Intersection Observer for scroll animations
+    const gameZoneObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('game-zone-animate');
+                gameZoneObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Observe all game items
+    gameItems.forEach(item => {
+        gameZoneObserver.observe(item);
     });
 });
