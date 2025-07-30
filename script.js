@@ -529,3 +529,76 @@ document.addEventListener('DOMContentLoaded', function () {
         gameZoneObserver.observe(item);
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Accordion functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            item.classList.toggle('active');
+        });
+    });
+
+    // Search functionality
+    const faqSearch = document.getElementById('faqSearch');
+
+    faqSearch.addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('h3').textContent.toLowerCase();
+            const answer = item.querySelector('p').textContent.toLowerCase();
+
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                item.style.display = 'block';
+
+                // Highlight matching text
+                const answerText = item.querySelector('.faq-answer-inner p');
+                if (searchTerm.length > 2) {
+                    const regex = new RegExp(searchTerm, 'gi');
+                    answerText.innerHTML = answerText.textContent.replace(
+                        regex,
+                        match => `<span style="background-color: rgba(110, 69, 226, 0.5);">${match}</span>`
+                    );
+                } else {
+                    answerText.innerHTML = answerText.textContent;
+                }
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+
+    // Animate elements when they come into view
+    const animateOnScroll = function () {
+        const elements = document.querySelectorAll('.faq-item, .faq-search, .faq-contact');
+
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (elementPosition < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    // Run once on load
+    animateOnScroll();
+
+    // Run on scroll
+    window.addEventListener('scroll', animateOnScroll);
+});
